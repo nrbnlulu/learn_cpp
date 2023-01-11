@@ -23,6 +23,14 @@ target_include_directories(mystaticlib
 # https://stackoverflow.com/questions/11801186
 set_target_properties(mystaticlib PROPERTIES LINKER_LANGUAGE CXX)
 
+# shared libraries are .so (on linux) files that are pre-compiled. This will be
+# used to create a shared library with the name libhello_library.so with the
+# sources passed to the add_library() function.
+add_library(substract_library SHARED
+            ${PROJECT_SOURCE_DIR}/include/shared/substractlib/impl.cpp)
+# give library an alias name
+add_library(substract::library ALIAS substract_library)
+
 # When creating an executable that will use your library you must tell the
 # compiler about the library. This can be done using the target_link_libraries()
 # function.
@@ -35,3 +43,5 @@ target_include_directories(${PROJECT_NAME}
 # during link time. It will also propagate any include directories with PUBLIC
 # or INTERFACE scope from the linked library target.
 target_link_libraries(${PROJECT_NAME} PRIVATE mystaticlib)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE substract::library)
