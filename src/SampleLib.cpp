@@ -1,7 +1,6 @@
-#include <iostream>
 #include "SampleLib.h"
+#include <iostream>
 
-void Sample::sayHi(const char *name){
-    std::cout << "Hello " << name << std::endl;
+void Sample::sayHi(const char *name) {
+  std::cout << "Hello " << name << std::endl;
 };
-

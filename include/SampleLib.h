@@ -2,9 +2,7 @@
 
 #include <iostream>
 
-class Sample
-{
+class Sample {
 public:
-    static void sayHi(const char *name);
-
+  static void sayHi(const char *name);
 };
