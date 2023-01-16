@@ -45,3 +45,20 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} PRIVATE mystaticlib)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE substract::library)
+
+# ##############################################################################
+# Install
+# ##############################################################################
+# copies the runnables files to the system install directory (user/bin)
+
+# Binaries
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+
+# Library Note: may not work on windows
+install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
+
+# Header files
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
+
+# Config
+install(FILES ${PROJECT_SOURCE_DIR}/confexample.conf DESTINATION etc)
